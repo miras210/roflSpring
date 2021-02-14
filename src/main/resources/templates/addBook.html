@@ -6,12 +6,13 @@
     <title>Add Book</title>
 </head>
 <body>
+<header th:insert="blocks/header :: header"></header>
 <h1>Add Book</h1>
-<form class="form" th:method="POST" th:object="${addBookForm}" th:action="@{/anyController/addBook}">
-    <input type="text" class="input" placeholder="Book's ISBN" th:field="*{bookID}">
-    <input type="text" class="input" placeholder="Name of the book" th:field="*{bookName}">
-    <input type="text" class="input" placeholder="Author of the book" th:field="*{bookAuthor}">
-    <input type="number" class="input" placeholder="Count of copies" th:field="*{bookCount}">
+<form class="form" th:method="POST" th:action="@{/book/add}">
+    <input type="text" class="input" placeholder="Book's ISBN">
+    <input type="text" class="input" placeholder="Name of the book">
+    <input type="text" class="input" placeholder="Author of the book">
+    <input type="number" class="input" placeholder="Count of copies">
     <input type="submit" class="submit" value="Send">
 </form>
 </body>
