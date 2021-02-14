@@ -4,13 +4,15 @@ package com.example.assignment.repository.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="account")
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class User {
 
     @Id
