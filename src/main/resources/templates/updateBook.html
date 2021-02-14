@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+//4. Librarian must be able to change book details except isbn (5 point)
+<h1>Edit Book</h1>
+<form class="form" th:method="POST" th:object="${addBookForm}" th:action="@{/anyController/editBook}">
+    <input type="text" class="input" placeholder="Name of the book" th:field="*{bookName}">
+    <input type="text" class="input" placeholder="Author of the book" th:field="*{bookAuthor}">
+    <input type="number" class="input" placeholder="Count of copies" th:field="*{bookCount}">
+    <input type="submit" class="submit" value="Update">
+</form>
+</body>
+</html>
