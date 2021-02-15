@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-3">
+    <div th:each="student : ${user}" class="alert alert-info mt-0">
+        <h4 th:text="${student.username}"/>
+        <p><b>Name: </b><span th:text="${student.name}"/></p>
+        <p><b>Surname: </b><span th:text="${student.surname}"/></p>
+        <a th:href="'/user/' + ${student.username} + '/edit'" class="btn btn-warning">Update user</a>
+    </div>
+</div>
+</body>
+</html>
