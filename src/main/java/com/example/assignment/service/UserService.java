@@ -27,7 +27,6 @@ public class UserService {
         role.setDescription("Student");
         roleRepository.save(role);
         user.setRole(role);
-        System.out.println(user);
         userRepository.save(user);
     }
 }

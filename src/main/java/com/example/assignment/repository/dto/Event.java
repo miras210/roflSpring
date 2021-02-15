@@ -28,4 +28,6 @@ public class Event {
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+
 }

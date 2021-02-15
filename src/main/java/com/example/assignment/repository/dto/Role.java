@@ -18,4 +18,6 @@ public class Role {
     private Integer id;
 
     private String description;
+
+
 }
