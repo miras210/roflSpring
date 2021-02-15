@@ -26,15 +26,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/").hasRole("ADMIN")
                 //Доступ разрешен всем пользователей
                 .antMatchers("/", "/resources/", "/css/", "/js/", "/images/**").permitAll()
-                .antMatchers("/payments").authenticated()
-                .antMatchers("/transfer").authenticated()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
                 //Настройка для входа в систему
                 .formLogin()
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/account")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()
