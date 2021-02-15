@@ -24,6 +24,7 @@ public class BookController {
         model.addAttribute("book", new Book());
         return "addBook";
     }
+
     @PostMapping("/add")
     public String addBook(@ModelAttribute("book") Book book){
         bookService.registerBook(book);
@@ -41,6 +42,7 @@ public class BookController {
         model.addAttribute("book", new Book());
         return "updateBook";
     }
+
     @PostMapping("/{isbn}/edit")
     public String updateBook(@ModelAttribute("book") Book book, @PathVariable(value = "isbn") String isbn){
         bookService.updateBook(isbn, book);

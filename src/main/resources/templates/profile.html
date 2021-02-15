@@ -16,6 +16,12 @@
         <a th:href="'/event/borrow/'+${student.username}" class="btn btn-warning">Borrow a Book</a>
         <a th:href="'/user/' + ${student.username} + '/delete'" class="btn btn-warning">Delete user</a>
     </div>
+
+    <h3>List of Borrowed Books</h3>
+    <div th:each="book : ${books}" th:if="${book.deleted == false}" class="alert alert-info mt-0">
+        <a th:href="'/book/' + ${book.isbn}"><h4 th:text="${book.name}"/></a>
+    </div>
+
 </div>
 </body>
 </html>
