@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrow a Book</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1>Borrow a Book</h1>
+<form class="form" th:method="POST" th:object="${books}">
+    <h3>List of Books</h3>
+    <div th:each="book : ${books}" class="alert alert-info mt-0">
+        <input type="checkbox" name="isbn" th:value="${book.isbn}"><h4 th:text="${book.name}"/>
+    </div>
+    <input type="submit" class="submit" value="Borrow">
+</form>
+</body>
+</html>

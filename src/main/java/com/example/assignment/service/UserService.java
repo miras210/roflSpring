@@ -24,6 +24,10 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
+    public User getUserById(String id) {
+        return userRepository.findById(id).get();
+    }
+
     public void registerUser(User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         user.setDeleted(false);

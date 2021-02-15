@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,6 +34,10 @@ public class BookService {
         ArrayList<Book> res = new ArrayList<>();
         book.ifPresent(res::add);
         return res;
+    }
+
+    public ArrayList<Book> getBooksByIsbn(List<String> isbn) {
+        return (ArrayList<Book>) bookRepository.findAllById(isbn);
     }
 
     public void updateBook(String isbn, Book book){
