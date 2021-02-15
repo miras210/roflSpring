@@ -7,10 +7,7 @@ import com.example.assignment.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/book")
@@ -32,4 +29,22 @@ public class BookController {
         bookService.registerBook(book);
         return "redirect:/";
     }
+
+    @GetMapping("/{isbn}")
+    public String toBook(@PathVariable(value = "isbn") String isbn, Model model){
+        model.addAttribute("book", bookService.getIsbn(isbn));
+        return "book";
+    }
+
+    @GetMapping("/{isbn}/edit")
+    public String updateBookPage(@PathVariable(value = "isbn") String isbn, Model model){
+        model.addAttribute("book", new Book());
+        return "updateBook";
+    }
+    @PostMapping("/{isbn}/edit")
+    public String updateBook(@ModelAttribute("book") Book book, @PathVariable(value = "isbn") String isbn){
+        bookService.updateBook(isbn, book);
+        return "redirect:/";
+    }
+
 }

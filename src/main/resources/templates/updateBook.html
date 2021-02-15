@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit Book</title>
 </head>
 <body>
-//4. Librarian must be able to change book details except isbn (5 point)
+<header th:insert="blocks/header :: header"></header>
 <h1>Edit Book</h1>
-<form class="form" th:method="POST" th:object="${addBookForm}" th:action="@{/anyController/editBook}">
-    <input type="text" class="input" placeholder="Name of the book" th:field="*{bookName}">
-    <input type="text" class="input" placeholder="Author of the book" th:field="*{bookAuthor}">
-    <input type="number" class="input" placeholder="Count of copies" th:field="*{bookCount}">
-    <input type="submit" class="submit" value="Update">
-</form>
+    <form class="form" th:method="POST" th:object="${book}">
+        <input type="text" class="input" placeholder="Name of the book" th:field="*{name}">
+        <input type="text" class="input" placeholder="Author of the book" th:field="*{author}">
+        <input type="number" class="input" placeholder="Count of copies" th:field="*{count}">
+        <input type="submit" class="submit" value="Update">
+    </form>
 </body>
 </html>
