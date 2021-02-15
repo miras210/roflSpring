@@ -13,6 +13,7 @@
         <p><b>Name: </b><span th:text="${student.name}"/></p>
         <p><b>Surname: </b><span th:text="${student.surname}"/></p>
         <a th:href="'/user/' + ${student.username} + '/edit'" class="btn btn-warning">Update user</a>
+        <a th:href="'/user/' + ${student.username} + '/delete'" class="btn btn-warning">Delete user</a>
     </div>
 </div>
 </body>

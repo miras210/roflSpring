@@ -36,7 +36,7 @@ public class HomeController {
     }
 
     @GetMapping("/user/{id}/edit")
-    public String updateBookPage(@PathVariable(value = "id") String id, Model model){
+    public String updateUserPage(@PathVariable(value = "id") String id, Model model){
         model.addAttribute("user", new User());
         return "updateStudent";
     }
@@ -44,6 +44,13 @@ public class HomeController {
     @PostMapping("/user/{id}/edit")
     public String updateStudent(@ModelAttribute("user") User user, @PathVariable(value = "id") String id){
         userService.updateUser(id, user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/user/{id}/delete")
+    public String deleteStudent(@PathVariable(value = "id") String id){
+        System.out.println("hello");
+        userService.deleteUser(id);
         return "redirect:/";
     }
 }
