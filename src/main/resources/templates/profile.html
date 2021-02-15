@@ -14,6 +14,7 @@
         <p><b>Surname: </b><span th:text="${student.surname}"/></p>
         <a th:href="'/user/' + ${student.username} + '/edit'" class="btn btn-warning">Update user</a>
         <a th:href="'/event/borrow/'+${student.username}" class="btn btn-warning">Borrow a Book</a>
+        <a th:href="'/user/' + ${student.username} + '/delete'" class="btn btn-warning">Delete user</a>
     </div>
 </div>
 </body>

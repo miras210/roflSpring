@@ -55,5 +55,10 @@ public class UserService {
         updatedUser.setSurname(user.getSurname());
         userRepository.save(updatedUser);
     }
+    public void deleteUser(String id){
+        User deletingUser = userRepository.findById(id).orElseThrow();
+        deletingUser.setDeleted(true);
+        userRepository.save(deletingUser);
+    }
 
 }
