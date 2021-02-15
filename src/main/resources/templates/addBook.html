@@ -8,11 +8,11 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <h1>Add Book</h1>
-<form class="form" th:method="POST" th:action="@{/book/add}">
-    <input type="text" class="input" placeholder="Book's ISBN">
-    <input type="text" class="input" placeholder="Name of the book">
-    <input type="text" class="input" placeholder="Author of the book">
-    <input type="number" class="input" placeholder="Count of copies">
+<form class="form" th:method="POST" th:object="${book}" th:action="@{/book/add}">
+    <input type="text" class="input" placeholder="Book's ISBN" th:field="*{isbn}">
+    <input type="text" class="input" placeholder="Name of the book" th:field="*{name}">
+    <input type="text" class="input" placeholder="Author of the book" th:field="*{author}">
+    <input type="number" class="input" placeholder="Count of copies" th:field="*{count}">
     <input type="submit" class="submit" value="Send">
 </form>
 </body>

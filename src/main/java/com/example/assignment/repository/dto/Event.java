@@ -17,6 +17,8 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private String event_name;
+
     private Date date;
 
     @OneToOne
@@ -26,4 +28,6 @@ public class Event {
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+
 }
