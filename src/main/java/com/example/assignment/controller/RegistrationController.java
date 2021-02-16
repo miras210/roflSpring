@@ -28,8 +28,19 @@ public class RegistrationController {
     }
 
     @PostMapping("")
-    public String registerStudent(@ModelAttribute("user") User user) {
-        userService.registerUser(user);
+    public String registerStudent(@ModelAttribute("user") User user, Model model) {
+        String check = userService.registerUser(user);
+        if (check.equals("ok")){
+            return "redirect:/";
+        }
+        if (check.equals("restored")) {
+            model.addAttribute("message", "User with this username is restored");
+            return "error";
+        }
+        else if (check.equals("error")){
+            model.addAttribute("message", "Such user is already registered");
+            return "error";
+        }
         return "redirect:/";
     }
 }

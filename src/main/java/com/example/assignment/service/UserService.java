@@ -28,7 +28,25 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    public void registerUser(User user) {
+    public String registerUser(User user) {
+        boolean isPresent = userRepository.findById(user.getUsername()).isPresent();
+        if (isPresent) {
+            User u = userRepository.findById(user.getUsername()).get();
+
+            if (!u.getDeleted()) {
+                return "error";
+            }
+            if (u.getUsername().equals(user.getUsername()) && u.getDeleted()) {
+                user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+                user.setDeleted(false);
+                Role role = new Role();
+                role.setDescription("Student");
+                roleRepository.save(role);
+                user.setRole(role);
+                userRepository.save(user);
+                return "restored";
+            }
+        }
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         user.setDeleted(false);
         Role role = new Role();
@@ -36,6 +54,7 @@ public class UserService {
         roleRepository.save(role);
         user.setRole(role);
         userRepository.save(user);
+        return "ok";
     }
     public Iterable<User> showUsers(){
         Iterable<User> users = userRepository.findAll();
