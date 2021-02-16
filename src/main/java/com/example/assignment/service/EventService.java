@@ -50,4 +50,27 @@ public class EventService {
         }
         return books;
     }
+
+    public ArrayList<Event> getEvents(){
+        ArrayList<Event> events = (ArrayList<Event>) eventRepository.findAll();
+        return events;
+    }
+    public ArrayList<Event> getMyEvents(String id){
+        User u = userRepository.findById(id).get();
+        ArrayList<Event> events = (ArrayList<Event>) eventRepository.findAllByUser(u);
+        return events;
+    }
+
+    public void returnBook(User u, Book b){
+        ArrayList<Event> events = (ArrayList<Event>) eventRepository.findEventsByBook_IsbnAndUser_Username(b.getIsbn(),u.getUsername());
+        for (Event e:events) {
+            if (e.getEvent_name().equals("Borrow")){
+                e.setEvent_name("return");
+                e.setDate(new Date());
+                b.setCount(b.getCount()+1);
+                bookRepository.save(b);
+                eventRepository.save(e);
+            }//сделать поиск по дате
+        }
+    }
 }

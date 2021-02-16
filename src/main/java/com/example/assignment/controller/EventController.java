@@ -41,4 +41,16 @@ public class EventController {
         eventService.borrowBooks(u, b);
         return "redirect:/";
     }
+    @GetMapping("/{id}/return/{isbn}")
+    public String returnBook(@PathVariable(value = "isbn") String isbn, @PathVariable(value = "id") String id){
+        Book b = bookService.findBookbyIsbn(isbn);
+        User u = userService.getUserById(id);
+        eventService.returnBook(u, b);
+        return "redirect:/";
+    }
+    @GetMapping("/events")
+    public String toEvents(Model model){
+        model.addAttribute("events", eventService.getEvents());
+        return "events";
+    }
 }

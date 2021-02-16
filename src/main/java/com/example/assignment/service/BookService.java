@@ -39,6 +39,9 @@ public class BookService {
     public ArrayList<Book> getBooksByIsbn(List<String> isbn) {
         return (ArrayList<Book>) bookRepository.findAllById(isbn);
     }
+    public Book findBookbyIsbn(String isbn){
+        return bookRepository.findBookByIsbn(isbn);
+    }
 
     public void updateBook(String isbn, Book book){
         Book updatedBook = bookRepository.findById(isbn).orElseThrow();

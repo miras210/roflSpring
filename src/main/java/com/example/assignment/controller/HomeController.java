@@ -36,6 +36,7 @@ public class HomeController {
     public String toStudent(@PathVariable(value = "id") String id, Model model){
         model.addAttribute("user", userService.getId(id));
         model.addAttribute("books", eventService.getBorrowedBooks(id));
+        model.addAttribute("history", eventService.getMyEvents(id));
         return "profile";
     }
 
